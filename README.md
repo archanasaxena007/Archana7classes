@@ -25,5 +25,8 @@ Next, we need to install PostgreSQL shell from this site https://www.postgresql.
 We can create and run our subject,batch,student,teacher,availability and time_table psql tables in here.
 
 HOW TO USE THE PROJECT?
-
- 
+First we create a batch excel file containing columns batch_id and batch_name. 
+Then we create a subject excel file containing columns subject_id and subject_name.
+Then we create a student excel file containing columns student_id and student_name.
+Then we create a teacher excel file containing columns teacher_id and teacher_name.
+Then we create an availability excel file containing columns teacher_name, days and timings.
