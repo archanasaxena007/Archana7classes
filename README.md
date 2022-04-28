@@ -17,9 +17,11 @@ v) Availability - Consisiting of all the teacher names with their availability o
 
 HOW TO INSTALL AND RUN THE PROJECT?
 To run this particular project we need to install anaconda python and PostgreSQL shell.
-We need to install anaconda distrubution which is an open-source repository and toolkit. The site is https://www.anaconda.com/products/distribution 
+We need to install anaconda distrubution which is an open-source repository and toolkit. 
+The site is https://www.anaconda.com/products/distribution 
 It installs a package consisting of Anaconda Navigator, Powershell, Prompt, Jupyter Notebook and syder.
-Next, we need to install PostgreSQL shell from this site https://www.postgresql.org/download/
+Next, we need to install PostgreSQL shell.
+The site is https://www.postgresql.org/download/
 We can create and run our subject,batch,student,teacher,availability and time_table psql tables in here.
 
 HOW TO USE THE PROJECT?
