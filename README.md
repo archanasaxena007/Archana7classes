@@ -33,8 +33,13 @@ Then we create an availability excel file containing columns teacher_name, days 
 
 Now we enter the batches,subjects,students and teachers in their respective psql tables.
 Which will look like this-
+![1](https://user-images.githubusercontent.com/101273679/165882037-68bb564e-6d83-4934-b4c3-a4da08be4fb3.JPG)
+![1](https://user-images.githubusercontent.com/101273679/165882246-004f5b24-0a4f-4b1b-8719-ba24f9f503e2.JPG)
+![1](https://user-images.githubusercontent.com/101273679/165882472-f0b390f5-ea96-43f8-8cc5-a45b39a78aab.JPG)
+![1](https://user-images.githubusercontent.com/101273679/165882653-ee17c64e-9f7d-4892-b851-461791f8dd38.JPG)
+![1](https://user-images.githubusercontent.com/101273679/165882942-386a6fa3-46d6-4978-9e62-487ba6f52c5f.JPG)
 
-![1](https://user-images.githubusercontent.com/101273679/165880963-d49c6b6b-2631-4962-9cf0-f75d50eb3c76.JPG)    ![2](https://user-images.githubusercontent.com/101273679/165881471-65d80953-f381-4e17-bfcc-82e9d34957d4.JPG)                         ![3](https://user-images.githubusercontent.com/101273679/165881273-8a1276bc-56cc-48c6-a644-6e3104273aad.JPG)
+
 
 
 
