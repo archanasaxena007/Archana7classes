@@ -39,6 +39,19 @@ Which will look like this-
 ![1](https://user-images.githubusercontent.com/101273679/165882653-ee17c64e-9f7d-4892-b851-461791f8dd38.JPG)
 ![1](https://user-images.githubusercontent.com/101273679/165882942-386a6fa3-46d6-4978-9e62-487ba6f52c5f.JPG)
 
+Now, when we want to book a slot the process is as follows-
+![2](https://user-images.githubusercontent.com/101273679/165883464-d56ccfc8-d59e-41d7-817f-728cbda75087.JPG)
+
+Now, we have to delete the selected slot from the availability table and add to the time_table
+![3](https://user-images.githubusercontent.com/101273679/165883519-4774a680-d5e4-4e71-98a1-3d57be034f56.JPG)
+
+The result is as follows-
+
+
+![4](https://user-images.githubusercontent.com/101273679/165883543-47da3351-4e08-4ed6-a836-ed1112d39715.JPG)
+
+![5](https://user-images.githubusercontent.com/101273679/165883558-bb1f86dd-061f-4650-9fd0-e88ba1761a05.JPG)
+
 
 
 
