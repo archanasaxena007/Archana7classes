@@ -1,0 +1,178 @@
+# DAY 4 TASK
+# SUBJECT TABLE
+import pandas as pd
+data = pd.read_excel (r'D:\ARCHANA\7 CLASSES\subject.xlsx') 
+df = pd.DataFrame(data, columns= ['subject_name'])
+print (df)
+import psycopg2
+conn= psycopg2.connect("host=localhost dbname=postgres user=postgres password=archana")
+cur= conn.cursor()
+cur.execute('SELECT * FROM subject')
+#one = cur.fetchone()
+conn.commit()
+all = cur.fetchall()
+all
+for y,x in enumerate(df["subject_name"]):
+    try:
+     cur.execute(f"INSERT INTO subject(subject_id,subject_name) VALUES('{y}','{x}')")           
+     conn.commit()    
+    except:
+     conn.commit()
+    continue
+
+# DAY 4 TASK
+# BATCH TABLE
+import pandas as pd
+data = pd.read_excel (r'D:\ARCHANA\7 CLASSES\batch.xlsx') 
+df = pd.DataFrame(data, columns= ['batch_name'])
+print (df)
+import psycopg2
+conn= psycopg2.connect("host=localhost dbname=postgres user=postgres password=archana")
+cur= conn.cursor()
+cur.execute('SELECT * FROM batch')
+#one = cur.fetchone()
+conn.commit()
+all = cur.fetchall()
+all
+for y,x in enumerate(df["batch_name"]):
+    try:
+     cur.execute(f"INSERT INTO batch(batch_id,batch_name) VALUES('{y}','{x}')")           
+     conn.commit()    
+    except:
+     conn.commit()
+    continue
+
+# DAY 5-7 TASK
+# STUDENT TABLE
+import pandas as pd
+import psycopg2
+conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=archana")
+cur = conn.cursor()
+df = pd.read_excel(r'D:\ARCHANA\7 CLASSES\student.xlsx')
+df1= df[df['status']!='Done']
+for student,batch in df1[['student_name','batch_name']].values:
+    print('x')
+    cur.execute(f"SELECT batch_id from batch WHERE batch_name='{batch}';")
+    try:
+        batch_id=cur.fetchone()[0]
+        cur.execute(f"INSERT INTO student(batch_id,student_name) VALUES('{batch_id}','{student}')")
+        conn.commit()
+    except:
+        conn.commit()
+        continue
+df['status']='Done'
+df.to_excel(r'D:\ARCHANA\7 CLASSES\student.xlsx',index=False)
+
+# DAY 5-7 TASK
+# TEACHER TABLE
+import pandas as pd
+import psycopg2
+conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=archana")
+cur = conn.cursor()
+df = pd.read_excel(r'D:\ARCHANA\7 CLASSES\teacher.xlsx')
+df1= df[df['status']!='Done']
+for teacher,subject in df1[['teacher_name','subject_name']].values:
+    print('x')
+    cur.execute(f"SELECT subject_id from subject WHERE subject_name='{subject}';")
+    try:
+        subject_id=cur.fetchone()[0]
+        cur.execute(f"INSERT INTO teacher(subject_id,teacher_name) VALUES('{subject_id}','{teacher}')")
+        conn.commit()
+    except:
+        conn.commit()
+        continue
+ df['status']='Done'
+df.to_excel(r'D:\ARCHANA\7 CLASSES\teacher.xlsx',index=False)
+
+# DAY 8-10 TASK
+import pandas as pd
+import psycopg2
+conn = psycopg2.connect("host=localhost dbname=postgres user=postgres password=archana")
+cur = conn.cursor()
+df = pd.read_excel(r'D:\ARCHANA\7 CLASSES\Availability.xlsx')
+days=df.columns[1:]
+df1=pd.read_excel(r'D:\ARCHANA\7 CLASSES\Availability.xlsx')
+df=df1[df1['Status']!='Success']
+names=df['teacher_name'].values
+for name in names:
+    row=df[df['teacher_name']==f'{name}']
+    print(row)
+    for day in days:
+        print(day)
+        try:
+            timings=row[f'{day}'].values[0]
+            timings=[[int(x.split('-') [0]),int(x.split('-')[1])] for x in timings.split(',')]
+            for start,end in timings:
+                print(start,end)
+                for i in range(start,end+1):
+                    try:
+                        cur.execute(f"INSERT INTO availability(teacher_name,days,timings) VALUES('{name}','{day}','{i}-{i+1}');")
+                        conn.commit()
+                        print('executed')
+                    except:
+                        conn.commit()
+                        print("except 1")
+                        continue
+                print()
+        except:
+            print("except 2")
+            continue
+df1['Status']='Success'
+df1.to_excel(r'D:\ARCHANA\7 CLASSES\Availability.xlsx',index=False)
+print('hello')
+print(df)
+
+# DAY 11-13 TASK
+import psycopg2
+import pandas as pd
+conn = psycopg2.connect('host=localhost dbname=postgres user=postgres password=archana')
+cur = conn.cursor()
+df = pd.read_excel(r'D:\ARCHANA\7 CLASSES\Availability.xlsx')
+days = df.columns[1:]
+print(days)
+cur.execute('select subject_id,subject_name from subject;')
+subject_list = cur.fetchall()
+subjects = dict()
+print(subject_list)
+print(days,subject_list)
+#taking inputs from user(subject,days,timings)
+for subject_id,subject_name in subject_list:
+    subjects[subject_name]=subject_id   
+while True:
+    subject_name = input(f'Select preferred subject from {list(subjects.keys())} ')
+    if subject_name not in subjects.keys():
+        subject_name = input('Invalid Subject entered ')
+    else:
+        break    
+subject_id = subjects[subject_name]
+cur.execute(f"select teacher_name from teacher where subject_id = '{subject_id}';")
+teacher_name = cur.fetchall()
+length = len(teacher_name)
+df = pd.DataFrame(columns=['days','timings'])
+if length ==1:
+    cur.execute(f"select days,timings from availability where teacher_name = '{teacher_name[0][0]}'")
+    df = pd.DataFrame(cur.fetchall(),columns=['days','timings'])
+else:
+    while length>=1:
+        cur.execute(f"select days,timings from availability where teacher_name = '{teacher_name[length-1][0]}'")
+        df = pd.concat([df,pd.DataFrame(cur.fetchall(),columns=['days','timings'])])
+        length-=1  
+while True:      
+    days = input(f"select preferred day from these days: {df['days'].unique()} ")
+    if days not in df['days'].unique():
+        days = input('Invalid Day Entered ')
+    else:
+        break
+timings = df[df['days']==days]['timings'].values
+while True:      
+    time = input(f"Select preferred time from these timings: {timings} ")
+    if time not in timings:
+        time = input('Invalid Timings Entered')
+    else:
+        break
+cur.execute(f"select teacher_name from availability where days='{days}' and timings='{time}'")
+teacher = cur.fetchone()[0]
+cur.execute(f"delete from availability where days = '{days}' and timings ='{time}';")
+cur.execute(f"insert into time_table VALUES('{subject_name}','{days}','{time}')")
+conn.commit()
+
