@@ -9,11 +9,11 @@ This project helps to create availability table and time table for students and 
 
 TABLE OF CONTENTS:
 In this project we have used the following excel files-
-i) Batch - Consisiting of all the available batches along with batch id's
-ii) Subject - Consisiting of all the subject names along with subject id's
-iii) Student - Consisiting of all the students names along with student id's and also consisting of batch id as a FOREIGN KEY
-iv) Teacher - Consisiting of all the teachers names along with teacher id's and also consisting of subject id as a FOREIGN KEY
-v) Availability - Consisiting of all the teacher names with their availability of days and timings
+i) Batch - Consisiting of all the available batches along with batch id's.
+ii) Subject - Consisiting of all the subject names along with subject id's.
+iii) Student - Consisiting of all the students names along with student id's and also consisting of batch id as a FOREIGN KEY.
+iv) Teacher - Consisiting of all the teachers names along with teacher id's and also consisting of subject id as a FOREIGN KEY.
+v) Availability - Consisiting of all the teacher names with their availability of days and timings.
 
 HOW TO INSTALL AND RUN THE PROJECT?
 To run this particular project we need to install anaconda python and PostgreSQL shell.
@@ -25,9 +25,17 @@ The site is https://www.postgresql.org/download/
 We can create and run our subject,batch,student,teacher,availability and time_table psql tables in here.
 
 HOW TO USE THE PROJECT?
-First we create a batch excel file containing columns batch_id and batch_name. 
-Then we create a subject excel file containing columns subject_id and subject_name.
-Then we create a student excel file containing columns student_id and student_name.
-Then we create a teacher excel file containing columns teacher_id and teacher_name.
+First we create a batch excel file containing column batch_name. 
+Then we create a subject excel file containing column subject_name.
+Then we create a student excel file containing columns student_name and batch name as a FOREIGN KEY.
+Then we create a teacher excel file containing columns teacher_name and subject name as a FOREIGN KEY.
 Then we create an availability excel file containing columns teacher_name, days and timings.
+
+Now we enter the batches,subjects,students and teachers in their respective psql tables.
+Which will look like this-
+
+![1](https://user-images.githubusercontent.com/101273679/165880963-d49c6b6b-2631-4962-9cf0-f75d50eb3c76.JPG)    ![2](https://user-images.githubusercontent.com/101273679/165881471-65d80953-f381-4e17-bfcc-82e9d34957d4.JPG)                         ![3](https://user-images.githubusercontent.com/101273679/165881273-8a1276bc-56cc-48c6-a644-6e3104273aad.JPG)
+
+
+
 
